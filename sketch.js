@@ -173,7 +173,7 @@ function DebugText(){
 
 function anglereslt_1(){
     //膝
-    if ((leftflexiontext_01 < 95 && leftflexiontext_01 > 85 )|| (rightflexiontext_01 < 95 && rightflexiontext_01 > 85)){
+    if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80 )|| (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
         fill(0, 255, 0);
 
         text(target_angle_l1 + leftflexiontext_01 + "°", 1, 30);
@@ -405,11 +405,10 @@ function right_angle_2() {
 
 function conditions() {
     if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
-        if ((flag_1 == false && leftflexiontext_02 > 140 )|| (flag_1 == false && rightflexiontext_02 > 140)){
-            flag_1 = true;
-        }
 
-        if ((flag_1 == true && leftflexiontext_02 < 130) || (flag_1 == true && rightflexiontext_02 < 130)) {
+        if ((flag_1 == false && leftflexiontext_02 >= 135 ) || (flag_1 == false && rightflexiontext_02 >= 135)){
+            flag_1 = true;
+        }else if ((flag_1 == true && leftflexiontext_02 <= 110) || (flag_1 == true && rightflexiontext_02 <= 110)) {
             conditions_count += 1;
             flag_1 = false;
         }
