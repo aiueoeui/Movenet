@@ -105,9 +105,9 @@ async function getPoses() {
 }
 
 function draw() {
-    // if (videoready == true && poses == undefined) {
-    //     location.reload();
-    // }
+    if (videoready == true && poses == undefined) {
+        getPoses();
+    }
 
     // console.log(poses);
     // console.log(video);
@@ -189,10 +189,16 @@ function drawKeypoints(){
                 stroke(0);
                 strokeWeight(4);
                  //描画がずれるため位置調整
-                
+                // console.log("x:"+x);
+                if(PC == true){
                 circle(map(x, 0, 640, 0, width),
                        map(y, 0, 480, 0, height),
                        16);
+                }else{
+                    circle(map(y, 0, 640, 0, width),
+                        map(x, 0, 480, 0, height),
+                        16);
+                }
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
             }
