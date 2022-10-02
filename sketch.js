@@ -104,9 +104,9 @@ async function getPoses() {
 }
 
 function draw() {
-    if (videoready == true && poses == undefined) {
-        location.reload();
-    }
+    // if (videoready == true && poses == undefined) {
+    //     location.reload();
+    // }
 
     // console.log(poses);
 
