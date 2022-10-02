@@ -214,7 +214,7 @@ function anglereslt_1(){
 }
 
 function anglereslt_2(){
-    if ((flag_1 == true && leftflexiontext_02 > 140) || (flag_1 == true && rightflexiontext_02 > 140)) {
+    if ((flag_1 == true && leftflexiontext_02 < 135) || (flag_1 == true && rightflexiontext_02 < 135)) {
         fill(0, 255, 0);
 
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
