@@ -68,7 +68,7 @@ async function videoReady() {
 function switchByWidth() {
     //レスポンシブ対応
     if (window.matchMedia('(max-width: 767px)').matches) {
-        createCanvas(screen.width, screen.height);//スマホ処理
+        createCanvas(screen.width, screen.height-100);//スマホ処理
         console.log("スマホ");
         PHONE = true;
     } else if (window.matchMedia('(min-width:768px)').matches) {
@@ -91,6 +91,8 @@ async function setup() {
     // video.size(320, 240);
     video.hide();
     await init();
+
+    poses = await detector.estimatePoses(video.elt);
 
     // createButton('pose').mousePressed(getPoses);
 }
