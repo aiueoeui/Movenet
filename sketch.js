@@ -149,9 +149,32 @@ function draw() {
 
     DebugText();
 
-    fill(200, 0, 0);//flag系テキスト
+    //flag系テキスト
     textSize(30);
-    flagresult();
+
+    if (KneeAboveHip == true) {
+        fill(0, 255, 0);
+        text("体制チェック" + KneeAboveHip, width - 265, 30);
+    } else {
+        fill(200, 0, 0);
+        text("体制チェック" + KneeAboveHip, width - 265, 30);
+    }
+
+    if (flag_1 == true) {
+        fill(0, 255, 0);
+        text("膝角度" + flag_1, width - 175, 60);
+    } else {
+        fill(200, 0, 0);
+        text("膝角度" + flag_1, width - 175, 60);
+    }
+
+    if (flag_2 == true) {
+        fill(0, 255, 0);
+        text("腰角度" + flag_2, width - 175, 90);
+    } else {
+        fill(200, 0, 0);
+        text("腰角度" + flag_2, width - 175, 90);
+    }
 
     fill(200, 0, 0);
     anglereslt_1();//角度テキスト
@@ -200,29 +223,6 @@ function anglereslt_2(){
     }
 }
 
-function flagresult(){
-    if(KneeAboveHip == true){
-        fill(0, 255, 0);
-        text("体制チェック" + KneeAboveHip, width - 265, 30);
-    } else {
-        text("体制チェック" + KneeAboveHip, width - 265, 30);
-    }
-
-    if(flag_1 == true){
-        fill(0, 255, 0);
-        text("膝角度" + flag_1, width - 175, 60);
-    } else {
-        text("膝角度" + flag_1, width - 175, 60);
-    }
-
-    if(flag_2 == true){
-        fill(0, 255, 0);
-        text("腰角度" + flag_2, width - 175, 90);
-    } else [
-        text("腰角度" + flag_2, width - 175, 90)
-    ]
-}
-
 function drawKeypoints(){
 
     if (poses && poses.length > 0) {
@@ -238,10 +238,11 @@ function drawKeypoints(){
                        map(y, 0, 480, 0, height),
                        16);
 
+                //顔隠し
                 fill(255, 255, 255);
                 ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
                         map(poses[0].keypoints[0].y, 0, 480, 0, height),
-                        400);
+                        200);
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
                 left_angle_1();
