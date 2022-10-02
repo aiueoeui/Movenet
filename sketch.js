@@ -14,7 +14,7 @@ let PHONE = false;
 let vertical_screen = false;
 let horizontal_screen = false;
 
-const confidence_threshold = 0.6; //指定数値以上の精度の場合
+const confidence_threshold = 0.5; //指定数値以上の精度の場合
 
 let target_angle_l1 = "左膝 "; //部位名
 let leftflexiontext_01 = 0;
@@ -437,7 +437,7 @@ function right_angle_2() {
 
 function conditions() {
 
-    if (poses[0].keypoints[13].scpre > confidence_threshold || poses[0].keypoints[14].scpre > confidence_threshold){//腰のスコアが一定以上の場合
+    if (poses[0].keypoints[11].scpre > confidence_threshold || poses[0].keypoints[12].scpre > confidence_threshold){//腰のスコアが一定以上の場合
         if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
             KneeAboveHip = true;
         } else {
