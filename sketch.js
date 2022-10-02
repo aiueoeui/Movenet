@@ -187,9 +187,10 @@ function drawKeypoints(){
                 stroke(0);
                 strokeWeight(4);
                  //描画がずれるため位置調整
-                circle(map(x, 0, 640, 0, width),
-                       map(y, 0, 480, 0, height),
-                       16);
+                // circle(map(x, 0, 640, 0, width),
+                //        map(y, 0, 480, 0, height),
+                //        16);
+                circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
             }
             left_angle_1();
@@ -227,10 +228,11 @@ function drawSkeleton() {
                     strokeWeight(2);
                     stroke('rgb(255, 255, 255)');
                     //描画がずれるため位置調整
-                    line(map(x1, 0, 640, 0, width),
-                         map(y1, 0, 480, 0, height),
-                         map(x2, 0, 640, 0, width),
-                         map(y2, 0, 480, 0, height));
+                    // line(map(x1, 0, 640, 0, width),
+                    //      map(y1, 0, 480, 0, height),
+                    //      map(x2, 0, 640, 0, width),
+                    //      map(y2, 0, 480, 0, height));
+                    line(x1, y1, x2, y2);
                 }
             }
         }
