@@ -11,6 +11,9 @@ let videoready = false;
 let PC = false;
 let PHONE = false;
 
+let vertical_screen = false;
+let horizontal_screen = false;
+
 const confidence_threshold = 0.5; //指定数値以上の精度の場合
 
 let target_angle_l1 = "左膝 "; //部位名
@@ -75,8 +78,24 @@ function switchByWidth() {
         createCanvas(1280, 960);//PC処理
         console.log("PC");
         PC = true;
+    } else if(horizontal_screen == true){
+        createCanvas(screen.width, screen.height);//スマホ横向き処理
+        console.log("スマホ横向き");
+        PHONE = true;
     }
 }
+
+function orientCheck() {
+    //画面の向きを 0,90,180,-90 のいずれかで取得
+    var orientation = window.orientation;
+
+    if (orientation === 0) {
+        /*  縦画面時の処理  */
+    } else {
+        /*  横画面時の処理  */
+        horizontal_screen = true;
+    }
+};
 
 async function setup() {
 
@@ -190,15 +209,9 @@ function drawKeypoints(){
                 strokeWeight(4);
                  //描画がずれるため位置調整
                 // console.log("x:"+x);
-                if(PC == true){
                 circle(map(x, 0, 640, 0, width),
                        map(y, 0, 480, 0, height),
                        16);
-                }else{
-                    circle(map(y, 0, 640, 0, width),
-                        map(x, 0, 480, 0, height),
-                        16);
-                }
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
             }
