@@ -73,12 +73,14 @@ function switchByWidth() {
     //画面の向きを 0,90,180,-90 のいずれかで取得
     var orientation = window.orientation;
 
-    if (orientation === 0) {
+    if (orientation == 0 || orientation == undefined) {
         /*  縦画面時の処理  */
         vertical_screen = true;
+        horizontal_screen = false;
     } else {
         /*  横画面時の処理  */
         horizontal_screen = true;
+        vertical_screen = false;
     }
 
     //レスポンシブ対応
@@ -91,7 +93,7 @@ function switchByWidth() {
         console.log("スマホ横向き");
         PHONE = true;
     } else if (window.matchMedia('(min-width:768px)').matches) {
-        createCanvas(1280, 900);//PC処理
+        createCanvas(1280, 960);//PC処理
         console.log("PC");
         PC = true;
     }
@@ -438,7 +440,7 @@ function right_angle_2() {
 function conditions() {
 
     if (poses[0].keypoints[11].scpre > confidence_threshold || poses[0].keypoints[12].scpre > confidence_threshold){//腰のスコアが一定以上の場合
-        if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
+        if ((poses[0].keypoints[13].y > poses[0].keypoints[11].y) && (poses[0].keypoints[14].y > poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
             KneeAboveHip = true;
         } else {
             KneeAboveHip = false;
