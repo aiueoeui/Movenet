@@ -403,11 +403,11 @@ function right_angle_2() {
 
 function conditions() {
     if ((leftflexiontext_01 < 95 && leftflexiontext_01 > 85) || (rightflexiontext_01 < 95 && rightflexiontext_01 > 85)){
-        if ((flag_1 == false && leftflexiontext_02 > 170 )|| (flag_1 == false && rightflexiontext_02 > 170)){
+        if ((flag_1 == false && leftflexiontext_02 > 120 )|| (flag_1 == false && rightflexiontext_02 > 120)){
             flag_1 = true;
         }
 
-        if ((flag_1 == true && leftflexiontext_02 < 150) || (flag_1 == true && rightflexiontext_02 < 150)) {
+        if ((flag_1 == true && leftflexiontext_02 < 110) || (flag_1 == true && rightflexiontext_02 < 110)) {
             conditions_count -= 1;
             flag_1 = false;
         }
