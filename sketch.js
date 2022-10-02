@@ -93,7 +93,7 @@ async function setup() {
 
     await init();
 
-    // createButton('pose').mousePressed(getPoses);
+    createButton('pose').mousePressed(getPoses);
 }
 
 async function getPoses() {
@@ -110,7 +110,7 @@ function draw() {
     // }
 
     // console.log(poses);
-    console.log(video);
+    // console.log(video);
 
     background(220);
     translate(width, 0);
@@ -189,6 +189,7 @@ function drawKeypoints(){
                 stroke(0);
                 strokeWeight(4);
                  //描画がずれるため位置調整
+                
                 circle(map(x, 0, 640, 0, width),
                        map(y, 0, 480, 0, height),
                        16);
