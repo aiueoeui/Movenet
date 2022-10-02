@@ -90,7 +90,7 @@ function switchByWidth() {
         console.log("スマホ横向き");
         PHONE = true;
     } else if (window.matchMedia('(min-width:768px)').matches) {
-        createCanvas(1280, 960);//PC処理
+        createCanvas(1280, 900);//PC処理
         console.log("PC");
         PC = true;
     }
@@ -155,6 +155,9 @@ function draw() {
 
     fill(200, 0, 0);
     anglereslt_2();
+
+    fill(200, 0, 0);
+    flagresult();
 }
 
 function DebugText(){
@@ -191,15 +194,26 @@ function anglereslt_2(){
 
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
         text(target_angle_r2 + rightflexiontext_02 + "°", 1, 120);
-        text(flag_2,width -175, 60);
-        text(flag_1, width - 175, 30);
     } else {
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
         text(target_angle_r2 + rightflexiontext_02 + "°", 1, 120);
+    }
+}
+
+function flagresult(){
+    if(flag_1 == true){
+        fill(0, 255, 0);
         text(flag_1, width - 75, 30);
-        text(flag_2, width - 175, 60);
+    } else {
+        text(flag_1, width - 75, 30);
     }
 
+    if(flag_2 == true){
+        fill(0, 255, 0);
+        text(flag_2, width - 75, 60);
+    } else [
+        text(flag_2, width - 75, 60)
+    ]
 }
 
 function drawKeypoints(){
@@ -224,6 +238,8 @@ function drawKeypoints(){
             // console.log(leftflexiontext_01);
             right_angle_1();
             right_angle_2();
+
+            conditions();
         }
     }
     
@@ -407,15 +423,17 @@ function right_angle_2() {
 
 function conditions() {
     if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
-        flag_2 = true;
+        flag_1 = true;
+    } else {
+        flag_1 = false;
     }
 
-    if ( flag_2 == true){
-        if ((flag_1 == false && leftflexiontext_02 >= 135) || (flag_1 == false && rightflexiontext_02 >= 135)) {
-            flag_1 = true;
-        } else if ((flag_1 == true && leftflexiontext_02 <= 110) || (flag_1 == true && rightflexiontext_02 <= 110)) {
-            conditions_count += 1;
-            flag_1 = false;
+    if (flag_1 == true){
+        if ((flag_2 == false && leftflexiontext_02 >= 135) || (flag_2 == false && rightflexiontext_02 >= 135)) {
+            flag_2 = true;
+        } else if ((flag_2 == true && leftflexiontext_02 <= 110) || (flag_2 == true && rightflexiontext_02 <= 110)) {
+            conditions_count -= 1;
+            flag_2 = false;
         }
     }
 }
