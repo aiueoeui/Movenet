@@ -69,33 +69,33 @@ async function videoReady() {
 }
 
 function switchByWidth() {
-    //レスポンシブ対応
-    if (window.matchMedia('(max-width: 767px)').matches) {
-        createCanvas(screen.width, screen.height-100);//スマホ処理
-        console.log("スマホ");
-        PHONE = true;
-    } else if (window.matchMedia('(min-width:768px)').matches) {
-        createCanvas(1280, 960);//PC処理
-        console.log("PC");
-        PC = true;
-    } else if(horizontal_screen == true){
-        createCanvas(screen.width, screen.height);//スマホ横向き処理
-        console.log("スマホ横向き");
-        PHONE = true;
-    }
-}
-
-function orientCheck() {
     //画面の向きを 0,90,180,-90 のいずれかで取得
     var orientation = window.orientation;
 
     if (orientation === 0) {
         /*  縦画面時の処理  */
+        vertical_screen = true;
     } else {
         /*  横画面時の処理  */
         horizontal_screen = true;
     }
-};
+
+    //レスポンシブ対応
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        createCanvas(screen.width, screen.height-100);//スマホ処理
+        console.log("スマホ");
+        PHONE = true;
+    } else if(horizontal_screen == true){
+        createCanvas(screen.width, screen.height);//スマホ横向き処理
+        console.log("スマホ横向き");
+        PHONE = true;
+    } else if (window.matchMedia('(min-width:768px)').matches) {
+        createCanvas(1280, 960);//PC処理
+        console.log("PC");
+        PC = true;
+    }
+    console.log(window.orientation);
+}
 
 async function setup() {
 
@@ -112,7 +112,7 @@ async function setup() {
 
     await init();
 
-    createButton('pose').mousePressed(getPoses);
+    // createButton('pose').mousePressed(getPoses);
 }
 
 async function getPoses() {
