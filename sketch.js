@@ -85,11 +85,11 @@ function switchByWidth() {
 
     //レスポンシブ対応
     if (window.matchMedia('(max-width: 767px)').matches) {
-        createCanvas(screen.width, screen.height);//スマホ処理
+        createCanvas(screen.width, screen.height-100);//スマホ処理
         console.log("スマホ");
         PHONE = true;
     } else if(horizontal_screen == true){
-        createCanvas(screen.height-100, screen.width);//スマホ横向き処理
+        createCanvas(screen.height, screen.width);//スマホ横向き処理
         console.log("スマホ横向き");
         PHONE = true;
     } else if (window.matchMedia('(min-width:768px)').matches) {
