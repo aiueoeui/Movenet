@@ -186,7 +186,7 @@ function anglereslt_1(){
 }
 
 function anglereslt_2(){
-    if ((flag_1 == false && leftflexiontext_02 > 120) || (flag_1 == false && rightflexiontext_02 > 120)) {
+    if ((flag_1 == true && leftflexiontext_02 > 120) || (flag_1 == true && rightflexiontext_02 > 120)) {
         fill(0, 255, 0);
 
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
@@ -403,11 +403,11 @@ function right_angle_2() {
 
 function conditions() {
     if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
-        if ((flag_1 == false && leftflexiontext_02 > 120 )|| (flag_1 == false && rightflexiontext_02 > 120)){
+        if ((flag_1 == false && leftflexiontext_02 > 140 )|| (flag_1 == false && rightflexiontext_02 > 140)){
             flag_1 = true;
         }
 
-        if ((flag_1 == true && leftflexiontext_02 < 110) || (flag_1 == true && rightflexiontext_02 < 110)) {
+        if ((flag_1 == true && leftflexiontext_02 < 130) || (flag_1 == true && rightflexiontext_02 < 130)) {
             conditions_count -= 1;
             flag_1 = false;
         }
