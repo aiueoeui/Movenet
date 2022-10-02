@@ -14,7 +14,7 @@ let PHONE = false;
 let vertical_screen = false;
 let horizontal_screen = false;
 
-const confidence_threshold = 0.5; //指定数値以上の精度の場合
+const confidence_threshold = 0.6; //指定数値以上の精度の場合
 
 let target_angle_l1 = "左膝 "; //部位名
 let leftflexiontext_01 = 0;
@@ -34,6 +34,7 @@ let conditions_angle_1 = 95;
 let conditions_angle_2 = 170;
 let conditions_angle_3 = 150;
 
+let KneeAboveHip = false;
 let flag_1 = false;
 let flag_2 = false;
 
@@ -148,16 +149,15 @@ function draw() {
 
     DebugText();
 
-    fill(200, 0, 0);
+    fill(200, 0, 0);//flag系テキスト
     textSize(30);
+    flagresult();
 
+    fill(200, 0, 0);
     anglereslt_1();//角度テキスト
 
     fill(200, 0, 0);
     anglereslt_2();
-
-    fill(200, 0, 0);//flag系テキスト
-    flagresult();
 }
 
 function DebugText(){
@@ -201,18 +201,25 @@ function anglereslt_2(){
 }
 
 function flagresult(){
+    if(KneeAboveHip == true){
+        fill(0, 255, 0);
+        text("体制チェック" + KneeAboveHip, width - 265, 30);
+    } else {
+        text("体制チェック" + KneeAboveHip, width - 265, 30);
+    }
+
     if(flag_1 == true){
         fill(0, 255, 0);
-        text(flag_1, width - 75, 30);
+        text("膝角度" + flag_1, width - 175, 60);
     } else {
-        text(flag_1, width - 75, 30);
+        text("膝角度" + flag_1, width - 175, 60);
     }
 
     if(flag_2 == true){
         fill(0, 255, 0);
-        text(flag_2, width - 75, 60);
+        text("腰角度" + flag_2, width - 175, 90);
     } else [
-        text(flag_2, width - 75, 60)
+        text("腰角度" + flag_2, width - 175, 90)
     ]
 }
 
@@ -237,14 +244,14 @@ function drawKeypoints(){
                         400);
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
-            }
-            left_angle_1();
-            left_angle_2();
-            // console.log(leftflexiontext_01);
-            right_angle_1();
-            right_angle_2();
+                left_angle_1();
+                left_angle_2();
+                // console.log(leftflexiontext_01);
+                right_angle_1();
+                right_angle_2();
 
-            conditions();
+                conditions();
+            }
         }
     }
     
@@ -427,6 +434,13 @@ function right_angle_2() {
 }
 
 function conditions() {
+
+    if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {
+        KneeAboveHip = true;
+    } else {
+        KneeAboveHip = false;
+    }
+
     if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
         flag_1 = true;
     } else {
@@ -437,7 +451,9 @@ function conditions() {
         if ((flag_2 == false && leftflexiontext_02 >= 135) || (flag_2 == false && rightflexiontext_02 >= 135)) {
             flag_2 = true;
         } else if ((flag_2 == true && leftflexiontext_02 <= 110) || (flag_2 == true && rightflexiontext_02 <= 110)) {
-            conditions_count -= 1;
+            if(conditions_count > 0){
+                conditions_count -= 1;
+            }
             flag_2 = false;
         }
     }
