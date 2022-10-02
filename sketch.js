@@ -245,14 +245,15 @@ function drawKeypoints(){
                         200);
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
-                left_angle_1();
-                left_angle_2();
-                // console.log(leftflexiontext_01);
-                right_angle_1();
-                right_angle_2();
 
-                conditions();
             }
+            left_angle_1();
+            left_angle_2();
+            // console.log(leftflexiontext_01);
+            right_angle_1();
+            right_angle_2();
+
+            conditions();
         }
     }
     
@@ -436,10 +437,12 @@ function right_angle_2() {
 
 function conditions() {
 
-    if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {
-        KneeAboveHip = true;
-    } else {
-        KneeAboveHip = false;
+    if (poses[0].keypoints[13].scpre > confidence_threshold){
+        if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {
+            KneeAboveHip = true;
+        } else {
+            KneeAboveHip = false;
+        }
     }
 
     if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
