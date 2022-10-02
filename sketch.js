@@ -86,7 +86,7 @@ function switchByWidth() {
         console.log("スマホ");
         PHONE = true;
     } else if(horizontal_screen == true){
-        createCanvas(screen.height-100, screen.width-100);//スマホ横向き処理
+        createCanvas(screen.height-100, screen.width);//スマホ横向き処理
         console.log("スマホ横向き");
         PHONE = true;
     } else if (window.matchMedia('(min-width:768px)').matches) {
@@ -186,7 +186,7 @@ function anglereslt_1(){
 }
 
 function anglereslt_2(){
-    if ((flag_1 == true && leftflexiontext_02 > 120) || (flag_1 == true && rightflexiontext_02 > 120)) {
+    if ((flag_1 == true && leftflexiontext_02 > 140) || (flag_1 == true && rightflexiontext_02 > 140)) {
         fill(0, 255, 0);
 
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
@@ -408,7 +408,7 @@ function conditions() {
         }
 
         if ((flag_1 == true && leftflexiontext_02 < 130) || (flag_1 == true && rightflexiontext_02 < 130)) {
-            conditions_count -= 1;
+            conditions_count += 1;
             flag_1 = false;
         }
     }
