@@ -156,7 +156,7 @@ function draw() {
     fill(200, 0, 0);
     anglereslt_2();
 
-    fill(200, 0, 0);
+    fill(200, 0, 0);//flag系テキスト
     flagresult();
 }
 
@@ -230,6 +230,11 @@ function drawKeypoints(){
                 circle(map(x, 0, 640, 0, width),
                        map(y, 0, 480, 0, height),
                        16);
+
+                fill(255, 255, 255);
+                ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
+                        map(poses[0].keypoints[0].y, 0, 480, 0, height),
+                        400);
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
             }
