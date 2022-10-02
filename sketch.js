@@ -439,8 +439,8 @@ function right_angle_2() {
 
 function conditions() {
 
-    if (poses[0].keypoints[11].score > confidence_threshold || poses[0].keypoints[12].score > confidence_threshold){//腰のスコアが一定以上の場合
-        if ((poses[0].keypoints[13].y > poses[0].keypoints[11].y) && (poses[0].keypoints[14].y > poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
+    if (poses[0].keypoints[13].score >= confidence_threshold || poses[0].keypoints[14].score >= confidence_threshold){//腰のスコアが一定以上の場合
+        if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
             KneeAboveHip = true;
         } else {
             KneeAboveHip = false;
