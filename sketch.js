@@ -126,7 +126,7 @@ async function getPoses() {
 
 function draw() {
     if (videoready == true && poses == undefined) {
-        getPoses();
+        getPoses(); //エラー時の再取得
     }
 
     // console.log(poses);
@@ -437,28 +437,30 @@ function right_angle_2() {
 
 function conditions() {
 
-    if (poses[0].keypoints[13].scpre > confidence_threshold){
-        if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {
+    if (poses[0].keypoints[13].scpre > confidence_threshold || poses[0].keypoints[14].scpre > confidence_threshold){//腰のスコアが一定以上の場合
+        if ((poses[0].keypoints[13].y < poses[0].keypoints[11].y) && (poses[0].keypoints[14].y < poses[0].keypoints[12].y)) {//腰の位置が膝より低い場合
             KneeAboveHip = true;
         } else {
             KneeAboveHip = false;
         }
     }
 
-    if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
-        flag_1 = true;
-    } else {
-        flag_1 = false;
-    }
+    if(KneeAboveHip == true){
+        if ((leftflexiontext_01 < 100 && leftflexiontext_01 > 80) || (rightflexiontext_01 < 100 && rightflexiontext_01 > 80)){
+            flag_1 = true;
+        } else {
+            flag_1 = false;
+        }
 
-    if (flag_1 == true){
-        if ((flag_2 == false && leftflexiontext_02 >= 135) || (flag_2 == false && rightflexiontext_02 >= 135)) {
-            flag_2 = true;
-        } else if ((flag_2 == true && leftflexiontext_02 <= 110) || (flag_2 == true && rightflexiontext_02 <= 110)) {
-            if(conditions_count > 0){
-                conditions_count -= 1;
+        if (flag_1 == true){
+            if ((flag_2 == false && leftflexiontext_02 >= 135) || (flag_2 == false && rightflexiontext_02 >= 135)) {
+                flag_2 = true;
+            } else if ((flag_2 == true && leftflexiontext_02 <= 110) || (flag_2 == true && rightflexiontext_02 <= 110)) {
+                if(conditions_count > 0){
+                    conditions_count -= 1;
+                }
+                flag_2 = false;
             }
-            flag_2 = false;
         }
     }
 }
