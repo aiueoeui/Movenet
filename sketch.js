@@ -111,6 +111,7 @@ function draw() {
     // }
 
     // console.log(poses);
+    console.log(video);
 
     background(220);
     translate(width, 0);
