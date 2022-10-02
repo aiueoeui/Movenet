@@ -22,10 +22,10 @@ let leftflexiontext_01 = 0;
 let target_angle_l2 = "左腰 "; 
 let leftflexiontext_02 = 0;
 
-let target_angle_r1 = "右膝";
+let target_angle_r1 = "右膝 ";
 let rightflexiontext_01 = 0;
 
-let target_angle_r2 = "右腰";
+let target_angle_r2 = "右腰 ";
 let rightflexiontext_02 = 0;
 
 let conditions_count = 10;
@@ -190,10 +190,12 @@ function anglereslt_2(){
         fill(0, 255, 0);
 
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
-        text(target_angle_r2 + rightflexiontext_02 + "°", (width - 150), 60);
+        text(target_angle_r2 + rightflexiontext_02 + "°", 1, 120);
+        text(flag_1,width -175, 30);
     } else {
         text(target_angle_l2 + leftflexiontext_02 + "°", 1, 60);
         text(target_angle_r2 + rightflexiontext_02 + "°", 1, 120);
+        text(flag_1, width - 75, 30);
     }
 
 }
