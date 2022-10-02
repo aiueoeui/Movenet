@@ -90,9 +90,8 @@ async function setup() {
     video.size(width, height);
     // video.size(320, 240);
     video.hide();
-    await init();
 
-    poses = await detector.estimatePoses(video.elt);
+    await init();
 
     // createButton('pose').mousePressed(getPoses);
 }
