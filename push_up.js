@@ -34,7 +34,7 @@ let conditions_angle_1 = 95;
 let conditions_angle_2 = 170;
 let conditions_angle_3 = 150;
 
-let HipAbovenose = false;
+let HipAbovewirst = false;
 let flag_1 = false;
 let flag_2 = false;
 
@@ -156,14 +156,14 @@ function draw() {
     //flag系テキスト
     textSize(30);
 
-    if (HipAbovenose == true) {
+    if (HipAbovewirst == true) {
         fill(0, 255, 0);
         textAlign(RIGHT, TOP);
-        text("体制チェック" + HipAbovenose, width, 1);
+        text("体制チェック" + HipAbovewirst, width, 1);
     } else {
         fill(200, 0, 0);
         textAlign(RIGHT, TOP);
-        text("体制チェック" + HipAbovenose, width, 1);
+        text("体制チェック" + HipAbovewirst, width, 1);
     }
 
     if (flag_1 == true) {
@@ -449,15 +449,15 @@ function right_angle_2() {
 function conditions() {
 
         if (poses[0].keypoints[11].score >= confidence_threshold || poses[0].keypoints[12].score >= confidence_threshold) {//腰のスコアが一定以上の場合
-            if ((poses[0].keypoints[11].y < poses[0].keypoints[0].y) || (poses[0].keypoints[12].y < poses[0].keypoints[0].y)) {//鼻の位置が腰より低い場合
-                HipAbovenose = true;
+            if ((poses[0].keypoints[11].y < poses[0].keypoints[9].y) || (poses[0].keypoints[12].y < poses[0].keypoints[10].y)) {//鼻の位置が腰より低い場合
+                HipAbovewirst = true;
             } else {
-                HipAbovenose = false;
+                HipAbovewirst = false;
             }
         }
 
-        if (HipAbovenose == true) {//膝角度チェック
-            if ((rightflexiontext_01 < 170 && rightflexiontext_01 > 150)) {
+        if (HipAbovewirst == true) {//膝角度チェック
+            if ((rightflexiontext_01 > 160)) {
                 flag_1 = true;
             } else {
                 flag_1 = false;
@@ -466,7 +466,9 @@ function conditions() {
             if (flag_1 == true) {//肘角度チェック
                 if ((flag_2 == false && rightflexiontext_02 >= 80 && rightflexiontext_02 <= 100)) {
                     flag_2 = true;
-                } else if ((flag_2 == true && rightflexiontext_02 >= 165)) {
+                } 
+                
+                if ((flag_2 == true && rightflexiontext_02 >= 160)) {
                     if (conditions_count > 0) {
                         conditions_count -= 1;
                     }
