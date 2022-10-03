@@ -250,10 +250,10 @@ function drawKeypoints() {
                     16);
 
                 // //顔隠し
-                // fill(255, 255, 255);
-                // ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
-                //     map(poses[0].keypoints[0].y, 0, 480, 0, height),
-                //     200);
+                fill(255, 255, 255);
+                ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
+                    map(poses[0].keypoints[0].y, 0, 480, 0, height),
+                    200);
                 // circle(x, y, 16);
                 // ellipse(map(x, 0, 640, 0, width), map(y, 0, 480, 0, height), 10, 10)
 
