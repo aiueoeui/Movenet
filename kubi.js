@@ -208,9 +208,23 @@ function DebugText() {
             txtscore = score.toFixed(2);//scoreを小数点2まで切り捨て
         }
     }
+    fill(255);
     text("score " + txtscore, 1, (height - 1));
-    text("Lcount " + Leftconditions_count, 220, (height - 1));
-    text("Rcount " + Rightconditions_count, 440, (height - 1));
+    if (Leftconditions_count == 0) {
+        fill(0, 200, 0);
+        text("Lcount " + Leftconditions_count, 220, (height - 1));
+    } else {
+        fill(255);
+        text("Lcount " + Leftconditions_count, 220, (height - 1));
+    }
+
+    if (Rightconditions_count == 0) {
+        fill(0, 200, 0);
+        text("Rcount " + Rightconditions_count, 440, (height - 1));
+    } else {
+        fill(255);
+        text("Rcount " + Rightconditions_count, 440, (height - 1));
+    }
 }
 
 function anglereslt_1() {

@@ -465,7 +465,7 @@ function conditions() {
         }
 
         if (flag_1 == true) {//肘角度チェック
-            if ((rightflexiontext_02 >= 170 && rightflexiontext_02 >= 170)) {
+            if ((leftflexiontext_02 >= 160 && rightflexiontext_02 >= 150)) {
                 flag_2 = true;
             } else {
                 flag_2 = false;
