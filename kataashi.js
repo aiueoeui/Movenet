@@ -285,7 +285,7 @@ function drawKeypoints() {
                     fill(255, 255, 255);
                     ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
                         map(poses[0].keypoints[0].y, 0, 480, 0, height),
-                        100);
+                        50);
                 }else{  
                     fill(255, 255, 255);
                     ellipse(map(poses[0].keypoints[0].x, 0, 640, 0, width),
